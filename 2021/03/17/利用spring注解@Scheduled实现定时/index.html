@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="我的第一篇微博文章, 唐松涛的个人博客">
-    <meta name="description" content="我的第一篇微博文章 | 唐松涛的个人博客">
+    <meta name="keywords" content="唐松涛的个人博客">
+    <meta name="description" content="利用spring注解@Scheduled实现定时1、在xml里加入task的命名空间xmlns:task= “http://www.springframework.org/schema/task&amp;quot;xsi:schemaLocatio">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>我的第一篇微博文章 | 唐松涛的个人博客</title>
+    <title>唐松涛的个人博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -278,13 +278,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        我的第一篇微博文章
+                        
                     </div>
                 </div>
             </div>
@@ -387,7 +387,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-03-15
+                    2021-03-17
                 </div>
 
                 
@@ -403,7 +403,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="利用spring注解-Scheduled实现定时"><a href="#利用spring注解-Scheduled实现定时" class="headerlink" title="利用spring注解@Scheduled实现定时"></a>利用spring注解@Scheduled实现定时</h1><h2 id="1、在xml里加入task的命名空间"><a href="#1、在xml里加入task的命名空间" class="headerlink" title="1、在xml里加入task的命名空间"></a>1、在xml里加入task的命名空间</h2><p>xmlns:task= “<a target="_blank" rel="noopener" href="http://www.springframework.org/schema/task&quot;">http://www.springframework.org/schema/task&quot;</a><br>xsi:schemaLocation=<br>“<a target="_blank" rel="noopener" href="http://www.springframework.org/schema/task">http://www.springframework.org/schema/task</a><br><a target="_blank" rel="noopener" href="http://www.springframework.org/schema/task/spring-task-3.1.xsd&quot;">http://www.springframework.org/schema/task/spring-task-3.1.xsd&quot;</a><br><img src="https://tangsongtao.github.io/medias/reward/Scheduled1.png" alt="Image text"></p>
+<h2 id="2、启用注解驱动的定时任务"><a href="#2、启用注解驱动的定时任务" class="headerlink" title="2、启用注解驱动的定时任务"></a>2、启用注解驱动的定时任务</h2><p>&lt;task:annotation-driven scheduler= “qbScheduler” mode= “proxy”/&gt;<br>必须开启这个配置，spring才能识别@Scheduled注解，否则不起作用；</p>
+<h2 id="3、配置定时任务的线程池"><a href="#3、配置定时任务的线程池" class="headerlink" title="3、配置定时任务的线程池"></a>3、配置定时任务的线程池</h2><p>&lt;task:scheduler id= “qbScheduler” pool-size= “10”/&gt;<br>这里线程池如果简单是本机测试无需配置，工程中则需要配置，单线程可能会出现被挤掉错乱的情况，定时跑的不一致（目前暂时未遇到），配置去确保无问题。<br><img src="https://tangsongtao.github.io/medias/reward/Scheduled2.png" alt="Image text"></p>
+
             </div>
             <hr/>
 
@@ -543,7 +546,7 @@
                     </span>
                     <a href="http://example.com" class="b-link-green">唐松涛的个人博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2021/03/15/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%BE%AE%E5%8D%9A%E6%96%87%E7%AB%A0/" class="b-link-green">我的第一篇微博文章</a>
+                    <a href="/2021/03/17/%E5%88%A9%E7%94%A8spring%E6%B3%A8%E8%A7%A3@Scheduled%E5%AE%9E%E7%8E%B0%E5%AE%9A%E6%97%B6/" class="b-link-green"></a>
                 </p>
             </div>
         </div>
@@ -564,11 +567,12 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/03/15/%E6%B5%8B%E8%AF%95/">
+                <a href="/2021/03/17/%E5%88%A9%E7%94%A8spring%E6%B3%A8%E8%A7%A3@Scheduled%E5%AE%9E%E7%8E%B0%E5%AE%9A%E6%97%B6/">
                     <div class="card-image">
                         
                         
@@ -578,12 +582,11 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">今天天气很好试试手
-</div>
+                    <div class="summary">利用spring注解@Scheduled实现定时1、在xml里加入task的命名空间xmlns:task= “http://www.springframework.org/schema/task&quot;xsi:schemaLocatio</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -592,6 +595,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -599,20 +603,21 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="fa fa-dot-circle-o"></i>
+                Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/15/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%BE%AE%E5%8D%9A%E6%96%87%E7%AB%A0/">
+                <a href="/2021/03/15/java%E5%9F%BA%E7%A1%80/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="我的第一篇微博文章">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">我的第一篇微博文章</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary"></div>
+                    <div class="summary">java语言基础switch语句的表达式可以是byte吗?可以是long吗?可以是String吗?可以,不可以,JDK7以后可以。JDK5以后可以是枚举，JDK7以后可以是字符串
+环境变量是干嘛的运行一个程序（命令），系统从当前目录寻找，或</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-15
@@ -625,7 +630,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
