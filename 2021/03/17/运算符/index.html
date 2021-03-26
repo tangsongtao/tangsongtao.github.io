@@ -436,6 +436,9 @@
 equals：
 通常会被重写，比较引用类型的内容是否相同
 </code></pre>
+<h2 id="关于关键字"><a href="#关于关键字" class="headerlink" title="关于关键字"></a>关于关键字</h2><h3 id="1、final"><a href="#1、final" class="headerlink" title="1、final"></a>1、final</h3><p>修饰一个变量时，是引用不能变，还是引用的对象不能变？</p>
+<p>使用final关键字修饰一个变量时，是指引用变量不能变，引用变量所指向的对象中的内容还是可以改变的。例如，对于如下语句：<br> final StringBuffer a=new StringBuffer(“immutable”);<br>执行如下语句将报告编译期错误：<br>a=new StringBuffer(“”);<br>但是，执行如下语句则可以通过编译：<br>a.append(“ broken!”);</p>
+<p>有人在定义方法的参数时，可能想采用如下形式来阻止方法内部修改传进来的参数对象：<br>    public void method(final  StringBuffer  param){<br>    }<br>实际上，这是办不到的，在该方法内部仍然可以增加如下代码来修改参数对象：<br>     param.append(“a”);</p>
 
             </div>
             <hr/>
@@ -597,12 +600,11 @@ equals：
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2021/03/17/%E8%BF%90%E7%AE%97%E7%AC%A6/">
+                <a href="/2021/03/26/%E5%A0%86%E6%A0%88/">
                     <div class="card-image">
                         
                         
@@ -612,14 +614,13 @@ equals：
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">java语言基础关于运算符1、逻辑单双问题&amp;&amp;和&amp;；||和|的区别
-双有短路效果
-区别:逻辑双与&amp;&amp;，如果左边的表达式位false，则符号右边的表达式不会执行，称为扩展的逻辑运算符的短路效果；
-同理逻</div>
+                    <div class="summary">JAVA堆、栈、常量池1、区别定义存在系统中的堆、栈和数据结构堆、栈区别；    这次主要说系统中的堆、栈，它是真实的内存物理区；
+1、栈区（stack）：由编译器自动分配释放 ，存放函数的参数值，局部变量的值等。
+2、堆区（heap）：是</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-17
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-26
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -628,7 +629,6 @@ equals：
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

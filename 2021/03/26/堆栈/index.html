@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="唐松涛的个人博客">
-    <meta name="description" content="java语言基础关于String1、String、StringBuffer、StringBuilder区别StringBuffer、StringBuilder和String一样，也用来代表字符串。String类是不可变类，任何对String">
+    <meta name="description" content="JAVA堆、栈、常量池1、区别定义存在系统中的堆、栈和数据结构堆、栈区别；    这次主要说系统中的堆、栈，它是真实的内存物理区；
+1、栈区（stack）：由编译器自动分配释放 ，存放函数的参数值，局部变量的值等。
+2、堆区（heap）：是">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -387,7 +389,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-03-15
+                    2021-03-26
                 </div>
 
                 
@@ -403,12 +405,78 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="java语言基础"><a href="#java语言基础" class="headerlink" title="java语言基础"></a>java语言基础</h1><h2 id="关于String"><a href="#关于String" class="headerlink" title="关于String"></a>关于String</h2><h3 id="1、String、StringBuffer、StringBuilder区别"><a href="#1、String、StringBuffer、StringBuilder区别" class="headerlink" title="1、String、StringBuffer、StringBuilder区别"></a>1、String、StringBuffer、StringBuilder区别</h3><p>StringBuffer、StringBuilder和String一样，也用来代表字符串。<br>String类是不可变类，任何对String的改变都 会引发新的String对象的生成；StringBuffer则是可变类，任何对它所指代的字符串的改变都不会产生新的对象。<br>可以通过javap -c XXX.class反编译查看String+原理：<br><img src="https://tangsongtao.github.io/medias/reward/String+.jpg" alt="String+本质是StringBuilder的append，反编译查看"><br>区别：StringBufferd支持并发操作，线性安全的，适合多线程中使用。StringBuilder不支持并发操作，线性不安全的，不适合多线程中使用。<br>新引入的StringBuilder类不是线程安全的，但其在单线程中的性能比StringBuffer高。<br><img src="https://tangsongtao.github.io/medias/reward/StringBuilder.jpg" alt="StringBuilder源码append图解"><br><img src="https://tangsongtao.github.io/medias/reward/StringBuffer.jpg" alt="StringBuffer源码append图解"><br>对比可以看到在StringBuffer的append方法实现上除了内部将toStringCache变量赋值为null，唯一的不同就是在方法上使用synchronized进行了同步处理。<br>toStringCache是用来缓存最后一次调用toString方法时生成的字符串，当StringBuffer内容变动时，改值也会变动。</p>
-<p>通过上面的append方法的对比，我们可以很轻易的发现StringBuffer是线程安全的，StringBuilder是非线程安全的。但使用synchronized进行同步处理，性能便会降低很多。</p>
-<h3 id="2，String-s-“Hello”-s-s-“world-”-这两行代码执行后，原始的String对象中的内容到底变了没有？"><a href="#2，String-s-“Hello”-s-s-“world-”-这两行代码执行后，原始的String对象中的内容到底变了没有？" class="headerlink" title="2，String s = “Hello”;s = s + “world!”;这两行代码执行后，原始的String对象中的内容到底变了没有？"></a>2，String s = “Hello”;s = s + “world!”;这两行代码执行后，原始的String对象中的内容到底变了没有？</h3><p>没有。<br>因为String被设计成不可变(immutable)类（final修饰），所以它的所有对象都是不可变对象。<br>在这段代码中，s原先指向一个String对象，内容是 “Hello”，然后对s进行了+操作;<br>这时，s不指向原来那个对象了，而指向了另一个 String对象，内容为”Hello world!”;<br>原来那个对象还存在于内存之中，只是s这个引用变量不再指向它了。<br><img src="https://tangsongtao.github.io/medias/reward/String.jpg" alt="图解"></p>
-<h3 id="3，String-str-“i”；和String-str-new-String-“i”-有区别吗？创建了几个对象；"><a href="#3，String-str-“i”；和String-str-new-String-“i”-有区别吗？创建了几个对象；" class="headerlink" title="3，String str =“i”；和String str = new String(“i”);有区别吗？创建了几个对象；"></a>3，String str =“i”；和String str = new String(“i”);有区别吗？创建了几个对象；</h3><p>前者会被JVM分配到常量池中，常量池中没有重复的元素。<br>String str1 =“i”;String str2 =“i”;</p>
-<p>str2不会重新创建一个常量，而是指向str1。<br>String str1 = new String(“i”);String str2 = new String(“i”);</p>
-<p>str1会在堆内存中创建对象<br>str2还是会再次创建一个新的对象<br><img src="https://tangsongtao.github.io/medias/reward/String2.jpg" alt="图解"></p>
+                <h1 id="JAVA堆、栈、常量池"><a href="#JAVA堆、栈、常量池" class="headerlink" title="JAVA堆、栈、常量池"></a>JAVA堆、栈、常量池</h1><h2 id="1、区别定义"><a href="#1、区别定义" class="headerlink" title="1、区别定义"></a>1、区别定义</h2><p>存在系统中的堆、栈和数据结构堆、栈区别；<br>    这次主要说系统中的堆、栈，它是真实的内存物理区；</p>
+<pre><code>1、栈区（stack）：由编译器自动分配释放 ，存放函数的参数值，局部变量的值等。
+2、堆区（heap）：是一个可动态申请的内存空间(其记录空闲内存空间的链表由操作系统维护)，分配方式倒是类似于链表。
+3. 常量池：存放字符串常量和基本类型常量（public static final）。常量池的好处是为了避免频繁的创建和销毁对象而影响系统性能，其实现了对象的共享。
+</code></pre>
+<p>各自特点：<br>栈和常量池中的对象可以共享，对于堆中的对象不可以共享。<br>栈中的数据大小和生命周期是可以确定的，当没有引用指向数据时，这个数据就会消失。<br>堆中的对象的由垃圾回收器负责回收，因此大小和生命周期不需要确定，具有很大的灵活性。</p>
+<p>示例：<br>1、字符串</p>
+<pre><code>String s1 = &quot;abc&quot;;//常量池中会建立&quot;abc&quot;的对象
+String s2 = &quot;abc&quot;;
+String s3 = &quot;abc&quot;;
+String ss1 = new String(&quot;abc&quot;);//会先去常量池中找也没有&quot;abc&quot;的对象，有则拷贝对象，否则先新建再拷贝
+String ss2 = new String(&quot;abc&quot;);
+String ss3 = new String(&quot;abc&quot;);
+</code></pre>
+<p><img src="https://tangsongtao.github.io/medias/reward/dz1.jpg" alt="示例图解"></p>
+<p>2、数据基本类型变量和常量</p>
+<pre><code>int a1 = 1;//栈中创建变量a1的引用，查找栈中是否存在1，没有则存放进去并指向它；
+int a2 = 1;
+int a3 = 1;
+public static final int intA1 = 1;//常量创建放入常量池；
+public static final int intA2 = 1;
+public static final int intA3 = 1;
+</code></pre>
+<p><img src="https://tangsongtao.github.io/medias/reward/dz2.jpg" alt="示例图解"></p>
+<p>3、成员变量和局部变量</p>
+<pre><code>public class Test &#123;
+    public static void main(String[] args) &#123;
+        int age = 18;            //age局部变量，存在栈中
+        Test test = new Test();    //test对象引用在栈中；new Test()存在堆中
+        test.change1(age);        //i为局部变量，都在栈中，引用完i就会回收
+        System.out.println(age);
+        Person p1= new Person(7,&quot;Java&quot;,&quot;student&quot;);
+
+       //p1为对象引用，栈中；7在栈中，&quot;Java&quot;,&quot;student&quot;在常量池中；
+       //age,name,work属于成员变量在堆中对象中，构造方法执行完后消失
+    &#125;
+    public void change1(int i)&#123;
+        i = 1234;
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<pre><code>public class Person &#123;
+    private int age;
+    private String name;
+    private String work;
+    public  Person(int a, String n, String w) &#123;
+        age = a;
+        name = n;
+        work = w;
+    &#125;
+    public int getAge() &#123;
+        return age;
+    &#125;
+    public String getName() &#123;
+        return name;
+    &#125;
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+    public String getWork() &#123;
+        return work;
+    &#125;
+    public void setWork(String work) &#123;
+        this.work = work;
+    &#125;
+    public void setAge(int age) &#123;
+        this.age = age;
+    &#125;
+&#125;
+</code></pre>
+<p><img src="https://tangsongtao.github.io/medias/reward/dz3.jpg" alt="示例图解"></p>
 
             </div>
             <hr/>
@@ -549,7 +617,7 @@
                     </span>
                     <a href="http://example.com" class="b-link-green">唐松涛的个人博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2021/03/15/java%E5%9F%BA%E7%A1%80/" class="b-link-green"></a>
+                    <a href="/2021/03/26/%E5%A0%86%E6%A0%88/" class="b-link-green"></a>
                 </p>
             </div>
         </div>
@@ -570,11 +638,12 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/03/17/%E5%88%A9%E7%94%A8spring%E6%B3%A8%E8%A7%A3@Scheduled%E5%AE%9E%E7%8E%B0%E5%AE%9A%E6%97%B6/">
+                <a href="/2021/03/26/%E5%A0%86%E6%A0%88/">
                     <div class="card-image">
                         
                         
@@ -584,43 +653,12 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">利用spring注解@Scheduled实现定时1、在xml里加入task的命名空间xmlns:task= “http://www.springframework.org/schema/task&quot;xsi:schemaLocatio</div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-17
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            唐松涛
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="fa fa-dot-circle-o"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/03/15/java%E5%9F%BA%E7%A1%80/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">java语言基础关于String1、String、StringBuffer、StringBuilder区别StringBuffer、StringBuilder和String一样，也用来代表字符串。String类是不可变类，任何对String</div>
+                    <div class="summary">JAVA堆、栈、常量池1、区别定义存在系统中的堆、栈和数据结构堆、栈区别；    这次主要说系统中的堆、栈，它是真实的内存物理区；
+1、栈区（stack）：由编译器自动分配释放 ，存放函数的参数值，局部变量的值等。
+2、堆区（heap）：是</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-15
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-26
                             </span>
                         <span class="publish-author">
                             
@@ -631,6 +669,42 @@
                     </div>
                 </div>
 
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/03/17/%E8%BF%90%E7%AE%97%E7%AC%A6/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">java语言基础关于运算符1、逻辑单双问题&amp;&amp;和&amp;；||和|的区别
+双有短路效果
+区别:逻辑双与&amp;&amp;，如果左边的表达式位false，则符号右边的表达式不会执行，称为扩展的逻辑运算符的短路效果；
+同理逻</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            唐松涛
+                            
+                        </span>
+                    </div>
+                </div>
                 
             </div>
         </div>
