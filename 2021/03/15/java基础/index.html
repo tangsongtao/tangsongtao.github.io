@@ -466,6 +466,9 @@ stringBuffer:____400
 
 stringBuilder:____998
 stringBuffer:____1000
+
+可以看出stringBuffer的线程无论多少执行后的个数均是对的；
+但是stringBuilder就会出现缺失，线程越大越明显；所以是不安全的；
 </code></pre>
 
             </div>
