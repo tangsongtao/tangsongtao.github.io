@@ -409,6 +409,64 @@
 <h3 id="3，String-str-“i”；和String-str-new-String-“i”-有区别吗？创建了几个对象；"><a href="#3，String-str-“i”；和String-str-new-String-“i”-有区别吗？创建了几个对象；" class="headerlink" title="3，String str =“i”；和String str = new String(“i”);有区别吗？创建了几个对象；"></a>3，String str =“i”；和String str = new String(“i”);有区别吗？创建了几个对象；</h3><p>前者会被JVM分配到常量池中，常量池中没有重复的元素。<br>String str1 =“i”;String str2 =“i”;</p>
 <p>str2不会重新创建一个常量，而是指向str1。<br>String str1 = new String(“i”);String str2 = new String(“i”);</p>
 <p>str1会在堆内存中创建对象<br>str2还是会再次创建一个新的对象<br><img src="https://tangsongtao.github.io/medias/reward/String2.jpg" alt="图解"></p>
+<h3 id="线程安全测试："><a href="#线程安全测试：" class="headerlink" title="线程安全测试："></a>线程安全测试：</h3><pre><code>public class Test &#123;
+    private static StringBuffer trade= new StringBuffer(&quot;MY&quot;);;
+    private static StringBuilder trade2= new StringBuilder(&quot;MY&quot;);;
+    public static void main(String[] args) &#123;
+        //证明StringBuffer线程安全，StringBuilder线程不安全
+        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuilder = new StringBuilder();
+        //线程计数器，线程完成一个记录一个，计数器递减
+        CountDownLatch latch1 = new CountDownLatch(200);
+        CountDownLatch latch2 = new CountDownLatch(200);
+        for(int i=0;i&lt;200;i++)&#123;
+            new Thread(new Runnable() &#123;
+                @Override
+                public void run() &#123;
+                    try &#123;
+                        stringBuilder.append(1);
+                    &#125; catch (Exception e) &#123;
+                        e.printStackTrace();
+                    &#125; finally &#123;
+                        latch1.countDown();
+                    &#125;
+                &#125;
+            &#125;).start();
+        &#125;
+        for(int i=0;i&lt;200;i++)&#123;
+            new Thread(new Runnable() &#123;
+                @Override
+                public void run() &#123;
+                    try &#123;
+                        stringBuffer.append(1);
+                    &#125; catch (Exception e) &#123;
+                        e.printStackTrace();
+                    &#125; finally &#123;
+                        latch2.countDown();
+                    &#125;
+                &#125;
+            &#125;).start();
+        &#125;
+        try &#123;
+            latch1.await();
+            System.out.println(&quot;stringBuilder:____&quot;+stringBuilder.length());
+            latch2.await();
+            System.out.println(&quot;stringBuffer:____&quot;+stringBuffer.length());
+        &#125; catch (InterruptedException e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+</code></pre>
+<p>输出结果：</p>
+<pre><code>stringBuilder:____200
+stringBuffer:____200
+
+stringBuilder:____399
+stringBuffer:____400
+
+stringBuilder:____998
+stringBuffer:____1000
+</code></pre>
 
             </div>
             <hr/>
