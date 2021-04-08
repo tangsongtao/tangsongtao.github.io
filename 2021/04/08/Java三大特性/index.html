@@ -5,9 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="唐松涛的个人博客">
-    <meta name="description" content="Java三大特性：封装、继承、多态一、封装定义：    封装是面向对象方法的重要原则；首先是抽象，把事物抽象成一个独立的整体，一个类，其次才是封装，将对象内部拥有的属性和动作隐藏起来，只保留特定的方法与外界联系。
+    <meta name="description" content="Java三大特性：封装、继承、多态一、封装定义：    封装是面向对象方法的重要原则；首先是抽象，把事物抽象成一个独立的整体，一个类，
+    其次才是封装，将对象内部拥有的属性和动作隐藏起来，只保留特定的方法与外界联系。
 
-作用：    符合面向对">
+作用：    ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -369,11 +370,13 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Java三大特性：封装、继承、多态"><a href="#Java三大特性：封装、继承、多态" class="headerlink" title="Java三大特性：封装、继承、多态"></a>Java三大特性：封装、继承、多态</h1><h2 id="一、封装"><a href="#一、封装" class="headerlink" title="一、封装"></a>一、封装</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><pre><code>    封装是面向对象方法的重要原则；首先是抽象，把事物抽象成一个独立的整体，一个类，其次才是封装，将对象内部拥有的属性和动作隐藏起来，只保留特定的方法与外界联系。
+                <h1 id="Java三大特性：封装、继承、多态"><a href="#Java三大特性：封装、继承、多态" class="headerlink" title="Java三大特性：封装、继承、多态"></a>Java三大特性：封装、继承、多态</h1><h2 id="一、封装"><a href="#一、封装" class="headerlink" title="一、封装"></a>一、封装</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><pre><code>    封装是面向对象方法的重要原则；首先是抽象，把事物抽象成一个独立的整体，一个类，
+    其次才是封装，将对象内部拥有的属性和动作隐藏起来，只保留特定的方法与外界联系。
 </code></pre>
 <h3 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h3><pre><code>    符合面向对象设计原则的第一条：单一性原则；
     
-    一个类把自己该做的事情封装起来，而不用暴露给其他类去处理，当内部的逻辑发生变化时，外部调用不用因此而修改，他们只调用开放的接口，而不用去关心内部的实现。
+    一个类把自己该做的事情封装起来，而不用暴露给其他类去处理，当内部的逻辑发生变化
+    时，外部调用不用因此而修改，他们只调用开放的接口，而不用去关心内部的实现。
 </code></pre>
 <h3 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h3><pre><code>package com.company;
 public class Person &#123;
@@ -389,11 +392,14 @@ public class Person &#123;
     &#125;
 &#125;
 </code></pre>
-<h2 id="二、继承（extends单一、implements多继承）"><a href="#二、继承（extends单一、implements多继承）" class="headerlink" title="二、继承（extends单一、implements多继承）"></a>二、继承（extends单一、implements多继承）</h2><h3 id="定义：-1"><a href="#定义：-1" class="headerlink" title="定义："></a>定义：</h3><pre><code>继承是使用已存在的类的定义作为基础建立新类的技术,新类的定义可以增加新的数据或新的功能,也可以用父类的功能,但不能选择性地继承父类。
+<h2 id="二、继承（extends单一、implements多继承）"><a href="#二、继承（extends单一、implements多继承）" class="headerlink" title="二、继承（extends单一、implements多继承）"></a>二、继承（extends单一、implements多继承）</h2><h3 id="定义：-1"><a href="#定义：-1" class="headerlink" title="定义："></a>定义：</h3><pre><code>继承是使用已存在的类的定义作为基础建立新类的技术,新类的定义可以增加新的数据或新的
+功能,也可以用父类的功能,但不能选择性地继承父类。
 </code></pre>
-<h3 id="三类关系："><a href="#三类关系：" class="headerlink" title="三类关系："></a>三类关系：</h3><pre><code>类：可以extends：类、抽象类（必须实现所有抽象方法），但只能extends一个，可以implements多个接口（必须实现所有接口方法）；
+<h3 id="三类关系："><a href="#三类关系：" class="headerlink" title="三类关系："></a>三类关系：</h3><pre><code>类：可以extends：类、抽象类（必须实现所有抽象方法），但只能extends一个，可以
+implements多个接口（必须实现所有接口方法）；
 
-抽象类：可以extends：类，抽象类（可全部、部分、或者完全不实现父类抽象方法），可以implements多个接口（可全部、部分、或者完全不实现接口方法）；
+抽象类：可以extends：类，抽象类（可全部、部分、或者完全不实现父类抽象方法），可以
+implements多个接口（可全部、部分、或者完全不实现接口方法）；
 
 接口：能extends多个接口；
 </code></pre>
@@ -410,10 +416,12 @@ public class Person &#123;
 
 如果父类没有定义无参构造函数，子类必须在构造函数的第一行代码使用super()显示调用；
 
-类默认拥有无参构造函数，如果定义了他有参构造函数，则无参函数失效，所以父类没有定义无参构造函数，不是指父类没有写无参构造函数。对比看下面的例子：
+类默认拥有无参构造函数，如果定义了他有参构造函数，则无参函数失效，所以父类没有定义
+无参构造函数，不是指父类没有写无参构造函数。对比看下面的例子：
 </code></pre>
 <p><img src="https://tangsongtao.github.io/medias/reward/extends0.jpg" alt="示例图解1"><br><img src="https://tangsongtao.github.io/medias/reward/extends1.jpg" alt="示例图解2"></p>
-<h3 id="继承的目的："><a href="#继承的目的：" class="headerlink" title="继承的目的："></a>继承的目的：</h3><pre><code>代码重用是一点，最重要的还是所谓想上转型，即父类的引用变量可以指向子类对象，这是Java面向对象最重要特性多态的基础。
+<h3 id="继承的目的："><a href="#继承的目的：" class="headerlink" title="继承的目的："></a>继承的目的：</h3><pre><code>代码重用是一点，最重要的还是所谓想上转型，即父类的引用变量可以指向子类对象，这是
+Java面向对象最重要特性多态的基础。
 </code></pre>
 <h2 id="三、多态"><a href="#三、多态" class="headerlink" title="三、多态"></a>三、多态</h2><h3 id="定义：-2"><a href="#定义：-2" class="headerlink" title="定义："></a>定义：</h3><pre><code>多态就是同一个行为具有多个不同表现形式或形态的能力。
 
@@ -422,7 +430,8 @@ public class Person &#123;
 <p><img src="https://tangsongtao.github.io/medias/reward/extends3.jpg" alt="示例图解3"></p>
 <h3 id="首先了解方法的区别"><a href="#首先了解方法的区别" class="headerlink" title="首先了解方法的区别"></a>首先了解方法的区别</h3><pre><code>一个方法可以由：修饰符如public、static+返回值+方法名+参数+throw的异常 5部分构成；
 
-其中只有方 法名和参数是唯一性标识，只要方法名和参数相同那他们就是相同的方法（参数的个数，类型，顺序一致，其中任何一项不同都是不同的方法）。
+其中只有方 法名和参数是唯一性标识，只要方法名和参数相同那他们就是相同的方法（参数
+的个数，类型，顺序一致，其中任何一项不同都是不同的方法）。
 </code></pre>
 <h3 id="重载："><a href="#重载：" class="headerlink" title="重载："></a>重载：</h3><p>重载是指一个类里面（包括父类的方法）存在方法名相同，但是参数不一样的方法，参数不一样可以是不同的参数个数、类型或顺序。<br><img src="https://tangsongtao.github.io/medias/reward/extends4.jpg" alt="示例图解4"><br><img src="https://tangsongtao.github.io/medias/reward/extends5.jpg" alt="示例图解5"></p>
 <h3 id="覆盖-重写："><a href="#覆盖-重写：" class="headerlink" title="覆盖/重写："></a>覆盖/重写：</h3><p>覆盖描述存在继承关系时子类的一种行为；<br>子类中存在和父类相同的方法即为覆盖，何谓相同方法请牢记前面的描述，方法名和参数相同，包括参数个数、类型、顺序；<br><img src="https://tangsongtao.github.io/medias/reward/extends6.jpg" alt="示例图解6"></p>
@@ -431,7 +440,8 @@ public class Person &#123;
 <h3 id="实现多态的三个条件（前提条件，向上转型、向下转型）"><a href="#实现多态的三个条件（前提条件，向上转型、向下转型）" class="headerlink" title="实现多态的三个条件（前提条件，向上转型、向下转型）"></a>实现多态的三个条件（前提条件，向上转型、向下转型）</h3><p>1、继承的存在；（继承是多态的基础，没有继承就没有多态）<br>2、子类重写父类的方法。（多态下会调用子类重写后的方法）<br>3、父类引用变量指向子类对象。（涉及子类到父类的类型转换）</p>
 <p>向上转型 Student person = new Student()<br>将一个父类的引用指向一个子类对象，成为向上转型，自动进行类型转换。此时通过父类引用变量调用的方法是子类覆盖或继承父类的方法，而不是父类的方法此时通过父类引用变量无法调用子类特有的方法。<br><img src="https://tangsongtao.github.io/medias/reward/extends7.jpg" alt="示例图解7"><br><img src="https://tangsongtao.github.io/medias/reward/extends8.jpg" alt="示例图解8"></p>
 <pre><code>向上转型的缺憾：
-只能调用父类中定义的属性和方法，对于子类中的方法和属性它就望尘莫及了，必须强转成子类类型；
+只能调用父类中定义的属性和方法，对于子类中的方法和属性它就望尘莫及了，必须强转成
+子类类型；
 </code></pre>
 <p><img src="https://tangsongtao.github.io/medias/reward/extends9.jpg" alt="示例图解9"><br><img src="https://tangsongtao.github.io/medias/reward/extends10.jpg" alt="示例图解10"></p>
 <p>向下转型 Student stu = (Student)person;<br>将一个指向子类对象的引用赋给一个子类的引用，成为向下转型，此时必须进行强制类型转换。向下转型必须转换为父类引用指向的真实子类类型，，否则将出现ClassCastException，不是任意的强制转换</p>
@@ -612,9 +622,10 @@ public class Person &#123;
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Java三大特性：封装、继承、多态一、封装定义：    封装是面向对象方法的重要原则；首先是抽象，把事物抽象成一个独立的整体，一个类，其次才是封装，将对象内部拥有的属性和动作隐藏起来，只保留特定的方法与外界联系。
+                    <div class="summary">Java三大特性：封装、继承、多态一、封装定义：    封装是面向对象方法的重要原则；首先是抽象，把事物抽象成一个独立的整体，一个类，
+    其次才是封装，将对象内部拥有的属性和动作隐藏起来，只保留特定的方法与外界联系。
 
-作用：    符合面向对</div>
+作用：    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2021-04-08
