@@ -438,13 +438,13 @@ Java面向对象最重要特性多态的基础。
 <p>覆盖/重写的规则：（两同两小一大原则）</p>
 <p>子类不能覆盖父类private的方法，private对子类不可见，如果子类定义了一个和父类private方法相同的方法，实为新增方法<br>重写方法的修饰符一定要大于被重写方法的修饰符(public &gt; protected &gt; default &gt; private)<br>重写抛出的异常需与父类相同或是父类异常的子类，或者重写方法干脆不写throws<br>重写方法的返回值必须与被重写方法一致，否则编译报错<br>静态方法不能被重写为非静态方法，否则编译出错</p>
 <h3 id="实现多态的三个条件（前提条件，向上转型、向下转型）"><a href="#实现多态的三个条件（前提条件，向上转型、向下转型）" class="headerlink" title="实现多态的三个条件（前提条件，向上转型、向下转型）"></a>实现多态的三个条件（前提条件，向上转型、向下转型）</h3><p>1、继承的存在；（继承是多态的基础，没有继承就没有多态）<br>2、子类重写父类的方法。（多态下会调用子类重写后的方法）<br>3、父类引用变量指向子类对象。（涉及子类到父类的类型转换）</p>
-<p>向上转型 Student person = new Student()<br>将一个父类的引用指向一个子类对象，成为向上转型，自动进行类型转换。此时通过父类引用变量调用的方法是子类覆盖或继承父类的方法，而不是父类的方法此时通过父类引用变量无法调用子类特有的方法。<br><img src="https://tangsongtao.github.io/medias/reward/extends7.jpg" alt="示例图解7"><br><img src="https://tangsongtao.github.io/medias/reward/extends8.jpg" alt="示例图解8"></p>
+<p>向上转型 Student person = new Jack()<br>将一个父类的引用指向一个子类对象，成为向上转型，自动进行类型转换。此时通过父类引用变量调用的方法是子类覆盖或继承父类的方法，而不是父类的方法此时通过父类引用变量无法调用子类特有的方法。<br><img src="https://tangsongtao.github.io/medias/reward/extends7.jpg" alt="示例图解7"><br><img src="https://tangsongtao.github.io/medias/reward/extends8.jpg" alt="示例图解8"></p>
 <pre><code>向上转型的缺憾：
 只能调用父类中定义的属性和方法，对于子类中的方法和属性它就望尘莫及了，必须强转成
 子类类型；
 </code></pre>
 <p><img src="https://tangsongtao.github.io/medias/reward/extends9.jpg" alt="示例图解9"><br><img src="https://tangsongtao.github.io/medias/reward/extends10.jpg" alt="示例图解10"></p>
-<p>向下转型 Student stu = (Student)person;<br>将一个指向子类对象的引用赋给一个子类的引用，成为向下转型，此时必须进行强制类型转换。向下转型必须转换为父类引用指向的真实子类类型，，否则将出现ClassCastException，不是任意的强制转换</p>
+<p>向下转型 Student stu = (Jack)person;<br>将一个指向子类对象的引用赋给一个子类的引用，成为向下转型，此时必须进行强制类型转换。向下转型必须转换为父类引用指向的真实子类类型，，否则将出现ClassCastException，不是任意的强制转换</p>
 <h3 id="面试题："><a href="#面试题：" class="headerlink" title="面试题："></a>面试题：</h3><p><img src="https://tangsongtao.github.io/medias/reward/extends11.jpg" alt="示例图解11"></p>
 <p>java中变量不能重写的。</p>
 
