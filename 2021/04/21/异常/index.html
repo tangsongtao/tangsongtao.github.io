@@ -5,10 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="唐松涛的个人博客">
-    <meta name="description" content="Java三大特性：封装、继承、多态一、封装定义：    封装是面向对象方法的重要原则；首先是抽象，把事物抽象成一个独立的整体，一个类，
-    其次才是封装，将对象内部拥有的属性和动作隐藏起来，只保留特定的方法与外界联系。
-
-作用：    ">
+    <meta name="description" content="异常异常本质上是程序上的错误，包括程序逻辑错误和系统错误。
+一、异常的分类分为两大类：Error和ExceptionError无法处理的异常；Exception可捕获的异常；
+Error一般都是和虚拟机相关的问题，如：系统崩溃、虚拟机错误、">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -354,7 +353,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-04-08
+                    2021-04-21
                 </div>
 
                 
@@ -370,83 +369,14 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Java三大特性：封装、继承、多态"><a href="#Java三大特性：封装、继承、多态" class="headerlink" title="Java三大特性：封装、继承、多态"></a>Java三大特性：封装、继承、多态</h1><h2 id="一、封装"><a href="#一、封装" class="headerlink" title="一、封装"></a>一、封装</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><pre><code>    封装是面向对象方法的重要原则；首先是抽象，把事物抽象成一个独立的整体，一个类，
-    其次才是封装，将对象内部拥有的属性和动作隐藏起来，只保留特定的方法与外界联系。
-</code></pre>
-<h3 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h3><pre><code>    符合面向对象设计原则的第一条：单一性原则；
-    
-    一个类把自己该做的事情封装起来，而不用暴露给其他类去处理，当内部的逻辑发生变化
-    时，外部调用不用因此而修改，他们只调用开放的接口，而不用去关心内部的实现。
-</code></pre>
-<h3 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h3><pre><code>package com.company;
-public class Person &#123;
-    private int age;
-    public int getAge() &#123;
-        return age;
-    &#125;
-    public void setAge(int age) throws Exception &#123;
-        if(age&gt;120)&#123;
-            throw new Exception(&quot;年龄无效！&quot;);
-        &#125;
-        this.age = age;
-    &#125;
-&#125;
-</code></pre>
-<h2 id="二、继承（extends单一、implements多继承）"><a href="#二、继承（extends单一、implements多继承）" class="headerlink" title="二、继承（extends单一、implements多继承）"></a>二、继承（extends单一、implements多继承）</h2><h3 id="定义：-1"><a href="#定义：-1" class="headerlink" title="定义："></a>定义：</h3><pre><code>继承是使用已存在的类的定义作为基础建立新类的技术,新类的定义可以增加新的数据或新的
-功能,也可以用父类的功能,但不能选择性地继承父类。
-</code></pre>
-<h3 id="三类关系："><a href="#三类关系：" class="headerlink" title="三类关系："></a>三类关系：</h3><pre><code>类：可以extends：类、抽象类（必须实现所有抽象方法），但只能extends一个，可以
-implements多个接口（必须实现所有接口方法）；
-
-抽象类：可以extends：类，抽象类（可全部、部分、或者完全不实现父类抽象方法），可以
-implements多个接口（可全部、部分、或者完全不实现接口方法）；
-
-接口：能extends多个接口；
-</code></pre>
-<h3 id="继承后的子类："><a href="#继承后的子类：" class="headerlink" title="继承后的子类："></a>继承后的子类：</h3><pre><code>子类拥有父类非private的属性和方法；
-
-子类可以添加自己的方法和属性，即对父类进行扩展；
-
-子类可以重新定义父类的方法，即多态；
-</code></pre>
-<p><img src="https://tangsongtao.github.io/medias/reward/extends2.jpg" alt="示例图解"></p>
-<h3 id="关于构造函数："><a href="#关于构造函数：" class="headerlink" title="关于构造函数："></a>关于构造函数：</h3><pre><code>构造函数不能被继承，子类可以通过super()显示调用父类的构造函数；
-
-创建子类时，编译器会自动调用父类的 无参构造函数；
-
-如果父类没有定义无参构造函数，子类必须在构造函数的第一行代码使用super()显示调用；
-
-类默认拥有无参构造函数，如果定义了他有参构造函数，则无参函数失效，所以父类没有定义
-无参构造函数，不是指父类没有写无参构造函数。对比看下面的例子：
-</code></pre>
-<p><img src="https://tangsongtao.github.io/medias/reward/extends0.jpg" alt="示例图解1"><br><img src="https://tangsongtao.github.io/medias/reward/extends1.jpg" alt="示例图解2"></p>
-<h3 id="继承的目的："><a href="#继承的目的：" class="headerlink" title="继承的目的："></a>继承的目的：</h3><pre><code>代码重用是一点，最重要的还是所谓想上转型，即父类的引用变量可以指向子类对象，这是
-Java面向对象最重要特性多态的基础。
-</code></pre>
-<h2 id="三、多态"><a href="#三、多态" class="headerlink" title="三、多态"></a>三、多态</h2><h3 id="定义：-2"><a href="#定义：-2" class="headerlink" title="定义："></a>定义：</h3><pre><code>多态就是同一个行为具有多个不同表现形式或形态的能力。
-
-简单来说多态就是同一个接口，使用不同的实例而执行不同操作。
-</code></pre>
-<p><img src="https://tangsongtao.github.io/medias/reward/extends3.jpg" alt="示例图解3"></p>
-<h3 id="首先了解方法的区别"><a href="#首先了解方法的区别" class="headerlink" title="首先了解方法的区别"></a>首先了解方法的区别</h3><pre><code>一个方法可以由：修饰符如public、static+返回值+方法名+参数+throw的异常 5部分构成；
-
-其中只有方 法名和参数是唯一性标识，只要方法名和参数相同那他们就是相同的方法（参数
-的个数，类型，顺序一致，其中任何一项不同都是不同的方法）。
-</code></pre>
-<h3 id="重载："><a href="#重载：" class="headerlink" title="重载："></a>重载：</h3><p>重载是指一个类里面（包括父类的方法）存在方法名相同，但是参数不一样的方法，参数不一样可以是不同的参数个数、类型或顺序。<br><img src="https://tangsongtao.github.io/medias/reward/extends4.jpg" alt="示例图解4"><br><img src="https://tangsongtao.github.io/medias/reward/extends5.jpg" alt="示例图解5"></p>
-<h3 id="覆盖-重写："><a href="#覆盖-重写：" class="headerlink" title="覆盖/重写："></a>覆盖/重写：</h3><p>覆盖描述存在继承关系时子类的一种行为；<br>子类中存在和父类相同的方法即为覆盖，何谓相同方法请牢记前面的描述，方法名和参数相同，包括参数个数、类型、顺序；<br><img src="https://tangsongtao.github.io/medias/reward/extends6.jpg" alt="示例图解6"></p>
-<p>覆盖/重写的规则：（两同两小一大原则）</p>
-<p>子类不能覆盖父类private的方法，private对子类不可见，如果子类定义了一个和父类private方法相同的方法，实为新增方法<br>重写方法的修饰符一定要大于被重写方法的修饰符(public &gt; protected &gt; default &gt; private)<br>重写抛出的异常需与父类相同或是父类异常的子类，或者重写方法干脆不写throws<br>重写方法的返回值必须与被重写方法一致，否则编译报错<br>静态方法不能被重写为非静态方法，否则编译出错</p>
-<h3 id="实现多态的三个条件（前提条件，向上转型、向下转型）"><a href="#实现多态的三个条件（前提条件，向上转型、向下转型）" class="headerlink" title="实现多态的三个条件（前提条件，向上转型、向下转型）"></a>实现多态的三个条件（前提条件，向上转型、向下转型）</h3><p>1、继承的存在；（继承是多态的基础，没有继承就没有多态）<br>2、子类重写父类的方法。（多态下会调用子类重写后的方法）<br>3、父类引用变量指向子类对象。（涉及子类到父类的类型转换）</p>
-<p>向上转型 Student person = new Jack()<br>将一个父类的引用指向一个子类对象，成为向上转型，自动进行类型转换。此时通过父类引用变量调用的方法是子类覆盖或继承父类的方法，而不是父类的方法此时通过父类引用变量无法调用子类特有的方法。<br><img src="https://tangsongtao.github.io/medias/reward/extends7.jpg" alt="示例图解7"><br><img src="https://tangsongtao.github.io/medias/reward/extends8.jpg" alt="示例图解8"></p>
-<pre><code>向上转型的缺憾：
-只能调用父类中定义的属性和方法，对于子类中的方法和属性它就望尘莫及了，必须强转成
-子类类型；
-</code></pre>
-<p><img src="https://tangsongtao.github.io/medias/reward/extends9.jpg" alt="示例图解9"><br><img src="https://tangsongtao.github.io/medias/reward/extends10.jpg" alt="示例图解10"></p>
-<p>向下转型 Student stu = (Jack)person;<br>将一个指向子类对象的引用赋给一个子类的引用，成为向下转型，此时必须进行强制类型转换。向下转型必须转换为父类引用指向的真实子类类型，，否则将出现ClassCastException，不是任意的强制转换</p>
-<h3 id="面试题："><a href="#面试题：" class="headerlink" title="面试题："></a>面试题：</h3><p><img src="https://tangsongtao.github.io/medias/reward/extends11.jpg" alt="示例图解11"></p>
-<p>java中变量不能重写的。</p>
+                <h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><p>异常本质上是程序上的错误，包括程序逻辑错误和系统错误。</p>
+<h2 id="一、异常的分类"><a href="#一、异常的分类" class="headerlink" title="一、异常的分类"></a>一、异常的分类</h2><p>分为两大类：Error和Exception<br>Error无法处理的异常；Exception可捕获的异常；</p>
+<h3 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h3><p>一般都是和虚拟机相关的问题，如：系统崩溃、虚拟机错误、系统资源如内存不足等。</p>
+<h3 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h3><p>相较于Error，相对比较常见，也经常遇到他或他的子类，Exception的子类是用来抽象主要都是程序自身出现类问题，开发过程中也是需要关注和处理这些问题，保证程序业务正常。</p>
+<p>具体Exception又区分了不可检查异常（RuntimeException）和可检查异常（编译时提示需对类进行抛异常处理）；</p>
+<p>而他们的父类都是Throwable；下图可以介绍相关关系：<br><img src="https://tangsongtao.github.io/medias/reward/yc.jpg" alt="异常图解"></p>
+<h2 id="二、常用方法"><a href="#二、常用方法" class="headerlink" title="二、常用方法"></a>二、常用方法</h2><p>1、getMessage()：获取detail message即相关的错误描述信息。<br>2、toString()：返回包含异常类名+getMessage()。<br>3、printStackTrace()：打印详细异常信息和异常抛出路径（不推荐使用，可使用log代替）。<br>（原因：1、输出控制台，产生的字符串记录是堆栈信息，过多易占满内存；2、日志交错，不易日志查看。）</p>
+<p>三、</p>
 
             </div>
             <hr/>
@@ -587,7 +517,7 @@ Java面向对象最重要特性多态的基础。
                     </span>
                     <a href="http://example.com" class="b-link-green">唐松涛的个人博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2021/04/08/Java%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/" class="b-link-green"></a>
+                    <a href="/2021/04/21/%E5%BC%82%E5%B8%B8/" class="b-link-green"></a>
                 </p>
             </div>
         </div>
@@ -608,9 +538,10 @@ Java面向对象最重要特性多态的基础。
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2021/04/21/%E5%BC%82%E5%B8%B8/">
                     <div class="card-image">
@@ -626,9 +557,9 @@ Java面向对象最重要特性多态的基础。
 一、异常的分类分为两大类：Error和ExceptionError无法处理的异常；Exception可捕获的异常；
 Error一般都是和虚拟机相关的问题，如：系统崩溃、虚拟机错误、</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-04-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-04-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -637,6 +568,7 @@ Error一般都是和虚拟机相关的问题，如：系统崩溃、虚拟机错
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -647,7 +579,7 @@ Error一般都是和虚拟机相关的问题，如：系统崩溃、虚拟机错
                 Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/01/%E5%8C%85%E6%9C%BA%E5%88%B6/">
+                <a href="/2021/04/08/Java%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/">
                     <div class="card-image">
                         
                         
@@ -657,10 +589,13 @@ Error一般都是和虚拟机相关的问题，如：系统崩溃、虚拟机错
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">“包”机制一、为什么java中要有”包”的概念？java中”包”的引入的主要原因是java本身跨平台特性的需求。因为java中的所有的资源也是以文件方式组织，这其中主要包含大量的类文件需要组织管理。java中同样采用了目录树形结构。虽然各种</div>
+                    <div class="summary">Java三大特性：封装、继承、多态一、封装定义：    封装是面向对象方法的重要原则；首先是抽象，把事物抽象成一个独立的整体，一个类，
+    其次才是封装，将对象内部拥有的属性和动作隐藏起来，只保留特定的方法与外界联系。
+
+作用：    </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-04-01
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-04-08
                             </span>
                         <span class="publish-author">
                             
