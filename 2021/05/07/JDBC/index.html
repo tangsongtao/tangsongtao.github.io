@@ -5,9 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="唐松涛的个人博客">
-    <meta name="description" content="异常异常本质上是程序上的错误，包括程序逻辑错误和系统错误。
-一、异常的分类分为两大类：Error和ExceptionError无法处理的异常；Exception可捕获的异常；
-Error一般都是和虚拟机相关的问题，如：系统崩溃、虚拟机错误、">
+    <meta name="description" content="JDBC1、jdbc是一种用于执行SQL语句的Java API；他是用一组用JAVA语言编写的类和接口组成；JDBC提供了一种操作数据的标准；JDBC的目标是使JAVA程序员使用JDBC可以链接任何提供了JDBC驱动程序的的数据库系统。
+j">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -353,7 +352,7 @@ Error一般都是和虚拟机相关的问题，如：系统崩溃、虚拟机错
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-04-21
+                    2021-05-07
                 </div>
 
                 
@@ -369,15 +368,8 @@ Error一般都是和虚拟机相关的问题，如：系统崩溃、虚拟机错
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><p>异常本质上是程序上的错误，包括程序逻辑错误和系统错误。</p>
-<h2 id="一、异常的分类"><a href="#一、异常的分类" class="headerlink" title="一、异常的分类"></a>一、异常的分类</h2><p>分为两大类：Error和Exception<br>Error无法处理的异常；Exception可捕获的异常；</p>
-<h3 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h3><p>一般都是和虚拟机相关的问题，如：系统崩溃、虚拟机错误、系统资源如内存不足等。</p>
-<h3 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h3><p>相较于Error，相对比较常见，也经常遇到他或他的子类，Exception的子类是用来抽象主要都是程序自身出现类问题，开发过程中也是需要关注和处理这些问题，保证程序业务正常。</p>
-<p>具体Exception又区分：<br>    不可检查异常（RuntimeException空指针、数组下标越界等异常）<br>    和可检查异常（编译时提示需对类进行抛异常处理）；</p>
-<p>而他们的父类都是Throwable；下图可以介绍相关关系：<br><img src="https://tangsongtao.github.io/medias/reward/yc.jpg" alt="异常图解"></p>
-<h2 id="二、常用方法"><a href="#二、常用方法" class="headerlink" title="二、常用方法"></a>二、常用方法</h2><p>1、getMessage()：获取detail message即相关的错误描述信息。<br>2、toString()：返回包含异常类名+getMessage()。<br>3、printStackTrace()：打印详细异常信息和异常抛出路径（不推荐使用，可使用log代替）。<br>（原因：1、输出控制台，产生的字符串记录是堆栈信息，过多易占满内存；2、日志交错，不易日志查看。）</p>
-<h2 id="三、异常处理"><a href="#三、异常处理" class="headerlink" title="三、异常处理"></a>三、异常处理</h2><p>常见异常处理：<br>1、可检查异常，可按提示在方法栈上层抛出，解决报错；<br>2、不可检查异常，使用try-catch进行相应处理，执行报错日志打印；</p>
-<h2 id="四、统一异常处理"><a href="#四、统一异常处理" class="headerlink" title="四、统一异常处理"></a>四、统一异常处理</h2><p>1、在调用原方法上进行try-catch，完成异常捕获，返回具体报错信息和日志记录等。</p>
+                <h1 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h1><p>1、jdbc是一种用于执行SQL语句的Java API；他是用一组用JAVA语言编写的类和接口组成；<br>JDBC提供了一种操作数据的标准；JDBC的目标是使JAVA程序员使用JDBC可以链接任何提供了JDBC驱动程序的的数据库系统。<br><img src="https://tangsongtao.github.io/medias/reward/JDBC1.jpg" alt="JDBC图解"></p>
+<p>java应用程序通过JDBC API首先连接到JDBC Driver，这些JDBC驱动器都是由各大数据库厂家针对JDBC提供的，我们可以在网上下载jar包来使用，然后通过JDBC驱动器就能连接到我们的数据库了。</p>
 
             </div>
             <hr/>
@@ -518,7 +510,7 @@ Error一般都是和虚拟机相关的问题，如：系统崩溃、虚拟机错
                     </span>
                     <a href="http://example.com" class="b-link-green">唐松涛的个人博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2021/04/21/%E5%BC%82%E5%B8%B8/" class="b-link-green"></a>
+                    <a href="/2021/05/07/JDBC/" class="b-link-green"></a>
                 </p>
             </div>
         </div>
@@ -543,7 +535,7 @@ Error一般都是和虚拟机相关的问题，如：系统崩溃、虚拟机错
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2021/05/07/JDBC/">
+                <a href="/2021/05/21/mysql/">
                     <div class="card-image">
                         
                         
@@ -553,11 +545,11 @@ Error一般都是和虚拟机相关的问题，如：系统崩溃、虚拟机错
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">JDBC1、jdbc是一种用于执行SQL语句的Java API；他是用一组用JAVA语言编写的类和接口组成；JDBC提供了一种操作数据的标准；JDBC的目标是使JAVA程序员使用JDBC可以链接任何提供了JDBC驱动程序的的数据库系统。
-j</div>
+                    <div class="summary">1、Mysql架构
+连接层最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安全接入的客户端提供线程。同样在该层上可以实现安全链接。服务器也会为安全接入的每个客户端验</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-05-07
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-05-21
                         </span>
                         <span class="publish-author">
                             
@@ -577,7 +569,7 @@ j</div>
                 Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/08/Java%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/">
+                <a href="/2021/04/21/%E5%BC%82%E5%B8%B8/">
                     <div class="card-image">
                         
                         
@@ -587,13 +579,12 @@ j</div>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Java三大特性：封装、继承、多态一、封装定义：    封装是面向对象方法的重要原则；首先是抽象，把事物抽象成一个独立的整体，一个类，
-    其次才是封装，将对象内部拥有的属性和动作隐藏起来，只保留特定的方法与外界联系。
-
-作用：    </div>
+                    <div class="summary">异常异常本质上是程序上的错误，包括程序逻辑错误和系统错误。
+一、异常的分类分为两大类：Error和ExceptionError无法处理的异常；Exception可捕获的异常；
+Error一般都是和虚拟机相关的问题，如：系统崩溃、虚拟机错误、</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-04-08
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-04-21
                             </span>
                         <span class="publish-author">
                             
